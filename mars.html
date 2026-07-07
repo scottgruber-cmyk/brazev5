@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Braze Banner Test Page</title>
+
+<script src="https://js.appboycdn.com/web-sdk/5.0/braze.min.js"></script>
+<script>
+  // 1. Initialize Braze
+  braze.initialize('34b4b1c6-03e3-4969-8377-24e2737c4562', {
+    baseUrl: "sdk.iad-02.braze.com",
+    enableLogging: true,
+    allowUserSuppliedJavascript: true,
+    minimumIntervalBetweenTriggerActionsInSeconds: 0
+  });
+
+  braze.automaticallyShowInAppMessages();
+  braze.openSession();
+
+  // 2. Determine the current page path
+  const currentPath = window.location.pathname;
+
+  // Optional: Log a generic page view for every page loaded
+  // braze.logPageView();
+
+  // 3. Fire custom events based on the URL visited
+  if (currentPath === '/mars') {
+    
+    // Fires when the user visits example.com/pricing
+    braze.logCustomEvent('test_page_view');
+
+  }
+</script>
+
+</head>
+<body>
+    <h1>MARS</h1>
+    <p>If your Braze campaign is configured correctly, the banner should appear here.</p>
+    <p>Right-click, select "Inspect", and open the <strong>Console</strong> tab to see Braze's logs.</p>
+</body>
+</html>
